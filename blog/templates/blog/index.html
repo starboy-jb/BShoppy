@@ -1,0 +1,30 @@
+{% extends 'blog/basic.html' %}
+{% block body%}
+<div class="container mt-4">
+  <div class="row mb-2">
+    {% for it in myPosts %}
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">{{it.head0}}</strong>
+          <p class="card-text">{{it.pub_date}}</p>
+          <h3 class="mb-0">{{it.title}}</h3>
+          <p class="card-text mb-auto">
+            {{it.chead0 | slice:":70"}}...
+          </p>
+          <a href="blogpost/{{it.post_id}}" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img src="/media/{{it.thumbnail}}" class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg">
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+
+</script>
+{% endblock %}
