@@ -1,38 +1,132 @@
 {% extends 'shop/basic.html' %}
 
 {% block title %} This is about page. {% endblock %}
+{%block css%}
+
+<style type="text/css">
+
+  .about{
+  cursor: pointer;
+  background-color: #808080;
+  color: #FFFFFF;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+.about h1 {
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+.about h2 {
+  opacity: .8;
+}
+.about span {
+  display: block;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  margin:auto;
+  border-radius:50%;  
+  font-size: 40px;
+  color: #FFFFFF;
+  opacity: 0.7;
+  background-color: #808080; 
+  border: 2px solid #3498DB;
+
+  webkit-transition:all .5s ease;
+  moz-transition:all .5s ease;
+  os-transition:all .5s ease;
+  transition:all .5s ease;
+
+}
+.about-item:hover span{
+  opacity: 1; 
+  border: 2px solid black;
+  background-color: #3498DB;
+  font-size: 42px;
+  -webkit-transform: scale(1.1,1.1) rotate(360deg) ;
+  -moz-transform: scale(1.1,1.1) rotate(360deg) ;
+  -o-transform: scale(1.1,1.1) rotate(360deg) ;
+  transform: scale(1.1,1.1) rotate(360deg) ;
+}
+.about-item:hover h2{
+  opacity: 1;
+  -webkit-transform: scale(1.1,1.1)  ;
+  -moz-transform: scale(1.1,1.1)  ;
+  -o-transform: scale(1.1,1.1)  ;
+  transform: scale(1.1,1.1) ;
+}
+.about .lead{
+/*  color: #CC0039; */
+  font-size: 14px;
+  font-weight: bold;
+}
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{%endblock%}
+{%block nav%}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/shop"> ECom </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/shop">Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/shop/tracker">Tracker</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/shop/about">About Us<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/shop/contact">Contact Us</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" method="get" action="/shop/search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button type="button" class="btn btn-secondary mx-2" id="popcart" data-container="body" data-html="true" data-toggle="popover" data-placement="bottom" data-content="what the fuck going on.">
+                    Cart(<span id='crt'>0</span>)
+                </button>
+            </form>
+            <button class="btn btn-primary" onclick="clearCart();"> Clear Cart </button>
+        </div>
+    </nav>
+
+{%endblock%}
 
 {% block body %}
-<div class="container">
-    <form action="/about" method="post">
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+     <section class="text-center about" style="margin-top: 5%;">
+      <h1>About US</h1>
+      <div class="container" style="margin-top: 2%;">
+        <div class="row">
+          <div class="col-lg-4 col-sm-6 col-ex-12 about-item wow lightSpeedIn" data-wow-offset="200" >
+            <span class="fa fa-group" style="margin-bottom: 1%"></span>
+            <h2>Group members</h2>
+            <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</p>
+          </div>
+          <div class="col-lg-4 col-sm-6 col-ex-12 about-item wow lightSpeedIn" data-wow-offset="200">
+            <span class="fa fa-info" style="margin-bottom: 1%;"></span>
+            <h2>Our information</h2>
+            <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum </p>
+          </div>
+          <div class="clearfix visible-md-block visible-sm-block"></div>
+          <div class="col-lg-4 col-sm-6 col-ex-12 about-item wow lightSpeedIn" data-wow-offset="200">
+            <span class="fa fa-file" style="margin-bottom: 1%;"></span>
+            <h2>Documents</h2>
+            <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</p>
+          </div>
+          
+        </div>
+        
       </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Example select</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect2">Example multiple select</label>
-        <select multiple class="form-control" id="exampleFormControlSelect2">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlTextarea1">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-      </div>
-    </form>
-</div>
+    </section>
+
 {% endblock %}
