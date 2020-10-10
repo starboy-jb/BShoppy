@@ -41,32 +41,42 @@
 {% block body %}
 <div class="container">
     <div class="col my-4">
-        <h2> Enter Your Order id For Track your orders. </h2>
-        <form method="POST" action="" id="trackerForm">{% csrf_token %}
-            <div class="form-row">
-                <div class="form-group col-md-6">
+        <h2 class="text-center mb-4"> Enter Your Order ID to track your orders. </h2>
+        <form method="POST" action="" id="trackerForm">
+            {% csrf_token %}
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 col-sm-12">
                     <label for="order_id">Order Id</label>
-                    <input type="text" class="form-control" id="orderId" name="orderId" placeholder="Enter Your Order id">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                    <input type="text" class="form-control" id="orderId" name="orderId" placeholder="Enter your order id" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Track Your Order</button>
+            <div class="row justify-content-center">
+                <div class="form-group col-md-6 col-sm-12">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+            </div>
+            <div class="row justify-content-center my-4">
+                <div class="col-md-6 col-sm-12 text-center">
+                    <button type="submit" class="btn btn-primary">Track Your Order</button>
+                </div>
+            </div>
         </form>
     </div>
-    <div class="col my-4">
-        <h2> Your Order Status </h2>
-        <div>
-            <ul class="list-group" id="items">
-                Enter Your id and email for track your orders.
-            </ul>
+    <div class="col my-4" id="order-details" style="display: none;">
+        <h2 class="text-center"> Order Status </h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-sm-12 text-center">
+                <ul class="list-group" id="items">
+                </ul>
+            </div>
         </div>
-        <h2> Your Order Details </h2>
-        <div>
-            <ul class="list-group" id="citems">
-            </ul>
+        <h2 class="text-center mt-4"> Your Order Details </h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-sm-12">
+                <ul class="list-group" id="citems">
+                </ul>
+            </div>
         </div>
     </div>
 </div>
@@ -119,7 +129,7 @@ $('#trackerForm').submit(function(event) {
                 $('#items').append(str);
                 $('#citems').append(str);
             }
-
+            $('#order-details').show();
         });
     event.preventDefault();
 })
